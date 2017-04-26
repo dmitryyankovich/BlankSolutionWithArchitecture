@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+# Locally installed NuGet packages.
+packages/
+
+# Generated files
+bin
+obj
+*.suo
+*.swp
+*.uduser
+*.user
+*.userprefs
