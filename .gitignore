@@ -13,3 +13,5 @@ obj
 *.uduser
 *.user
 *.userprefs
+*.mdf
+*.ldf
