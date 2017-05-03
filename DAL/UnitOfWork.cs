@@ -49,5 +49,25 @@ namespace DAL
         {
             get { return _roleRepository ?? (_roleRepository = new Repository<CustomRole>(Context)); }
         }
+        private Repository<Company> _companyRepository;
+        public IRepository<Company> CompanyRepository
+        {
+            get { return _companyRepository ?? (_companyRepository = new Repository<Company>(Context)); }
+        }
+        private Repository<Course> _courseRepository;
+        public IRepository<Course> CourseRepository
+        {
+            get { return _courseRepository ?? (_courseRepository = new Repository<Course>(Context)); }
+        }
+        private Repository<Resume> _resumeRepository;
+        public IRepository<Resume> ResumeRepository
+        {
+            get { return _resumeRepository ?? (_resumeRepository = new Repository<Resume>(Context)); }
+        }
+        private Repository<Tag> _tagRepository;
+        public IRepository<Tag> TagRepository
+        {
+            get { return _tagRepository ?? (_tagRepository = new Repository<Tag>(Context)); }
+        }
     }
 }

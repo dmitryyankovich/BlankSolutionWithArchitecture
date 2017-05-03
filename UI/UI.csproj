@@ -319,6 +319,10 @@
       <Project>{599d64a3-4fe9-4e3f-ba97-99650382dc62}</Project>
       <Name>BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{96a5bb33-c7a2-4610-9dab-3435b7957be7}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{23a66304-faa6-45f8-94bb-e6d8634e7f8c}</Project>
       <Name>DAL</Name>

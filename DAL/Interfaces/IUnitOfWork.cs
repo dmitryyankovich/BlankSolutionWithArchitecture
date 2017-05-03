@@ -12,5 +12,9 @@ namespace DAL.Interfaces
         void Commit();
         IRepository<CustomRole> RoleRepository { get; }
         IRepository<User> UserRepository { get; }
+        IRepository<Company> CompanyRepository { get; }
+        IRepository<Course> CourseRepository { get; }
+        IRepository<Resume> ResumeRepository { get; }
+        IRepository<Tag> TagRepository { get; }
     }
 }

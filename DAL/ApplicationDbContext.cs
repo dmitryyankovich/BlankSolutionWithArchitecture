@@ -26,5 +26,10 @@ namespace DAL
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Resume> Resumes { get; set; }
+        public DbSet<Tag> Tags { get; set; }
     }
 }
