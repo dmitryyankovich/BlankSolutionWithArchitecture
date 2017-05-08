@@ -239,7 +239,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Company\CompanyDetailsVM.cs" />
+    <Compile Include="Models\Company\CompanyIndexVM.cs" />
     <Compile Include="Models\Company\CompanyVM.cs" />
+    <Compile Include="Models\Courses\CourseDetailsVM.cs" />
     <Compile Include="Models\Courses\CoursesIndexVM.cs" />
     <Compile Include="Models\Courses\CourseVM.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -313,10 +316,14 @@
     <Content Include="Views\Shared\EditorTemplates\CourseVM.cshtml" />
     <Content Include="Views\Company\Create.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CompanyVM.cshtml" />
+    <Content Include="Views\Company\Index.cshtml" />
+    <Content Include="Views\Company\Details.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CompanyDetailsVM.cshtml" />
+    <Content Include="Views\Courses\Details.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CourseDetailsVM.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

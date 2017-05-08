@@ -10,7 +10,11 @@ namespace UI.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (User.IsInRole("CustomerAdministrator"))
+            {
+                return RedirectToAction("Index", "Company");
+            }
+            return RedirectToAction("Login", "Account", new { redirectUrl = Url.Action("Index") });
         }
 
         public ActionResult About()

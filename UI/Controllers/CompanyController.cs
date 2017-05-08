@@ -11,6 +11,7 @@ using UI.Models.Company;
 
 namespace UI.Controllers
 {
+    [Authorize]
     public class CompanyController : BaseController
     {
         public CompanyController(IUnitOfWork uow, ApplicationUserManager userManager)
@@ -21,13 +22,25 @@ namespace UI.Controllers
         // GET: Company
         public ActionResult Index()
         {
-            return View();
+            var model = new CompanyIndexVM
+            {
+                CanCreateCompany = User.IsInRole("CustomerAdministator") && CurrentUser.Company == null,
+                Companies = UnitOfWork.CompanyRepository.GetAll().ToList().Select(GetCourseListVM).ToList()
+            };
+            return View(model);
         }
 
         // GET: Company/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var company = UnitOfWork.CompanyRepository.Get(id);
+            if (company == null)
+            {
+                //TODO: show error message
+                throw new Exception("The customer doesn't exist.");
+            }
+            var model = GetViewModel(company);
+            return View(model);
         }
 
         // GET: Company/Create
@@ -46,7 +59,7 @@ namespace UI.Controllers
                 {
                     IsCreationRequest = true,
                 };
-                FillFromViewModel(company,model);
+                FillFromViewModel(company, model);
                 UnitOfWork.CompanyRepository.Insert(company);
                 UnitOfWork.Commit();
                 return RedirectToAction("Index");
@@ -103,7 +116,37 @@ namespace UI.Controllers
 
         #region Private methods
 
-        private void FillFromViewModel(Company company,CompanyVM model)
+        private CompanyListVM GetCourseListVM(Company company)
+        {
+            return new CompanyListVM
+            {
+                Id = company.Id,
+                City = company.City,
+                ContactEmail = company.ContactEmail,
+                ContactFirstName = company.ContactFirstName,
+                ContactLastName = company.ContactLastName,
+                ContactPhone = company.ContactPhone,
+                Name = company.Name
+            };
+        }
+
+        public CompanyDetailsVM GetViewModel(Company company)
+        {
+            return new CompanyDetailsVM
+            {
+                Id = company.Id,
+                Address = company.Address,
+                Benefits = company.Benefits,
+                City = company.City,
+                ContactEmail = company.ContactEmail,
+                ContactFirstName = company.ContactFirstName,
+                ContactLastName = company.ContactLastName,
+                ContactPhone = company.ContactPhone,
+                Name = company.Name
+            };
+        }
+
+        private void FillFromViewModel(Company company, CompanyVM model)
         {
             company.Address = model.Address;
             company.Benefits = model.Benefits;

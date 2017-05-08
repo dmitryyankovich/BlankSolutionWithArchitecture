@@ -12,7 +12,7 @@ namespace DAL.Models
 {
     public class Resume
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [ForeignKey("User")]
         public int Id { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
@@ -22,5 +22,6 @@ namespace DAL.Models
         public EnglishLevel EnglishLevel { get; set; }
         public SkillsLevel SkillsLevel { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
+        public virtual User User { get; set; }
     }
 }

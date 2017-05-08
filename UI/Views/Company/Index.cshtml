@@ -1,0 +1,77 @@
+﻿@model UI.Models.Company.CompanyIndexVM
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (Model.CanCreateCompany)
+{
+    <div class="row panel-container">
+        <div class="col-md-6 col-md-offset-3">
+
+            <div class="panel panel-default">
+                <div class="text-center">
+                    <a href="@Url.Action("Create")" class="provider-panel">
+                        <h4>
+                            Create Company
+                        </h4>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Contact FirstName
+            </th>
+            <th>
+                Contact LastName
+            </th>
+            <th>
+                Contact Phone
+            </th>
+            <th>
+                Contact Email
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+        @foreach (var company in Model.Companies)
+        {
+            <tr>
+                <td>
+                    @company.Name   
+                </td>
+                <td>
+                    @company.ContactFirstName
+                </td>
+                <td>
+                    @company.ContactLastName
+                </td>
+                <td>
+                    @company.ContactPhone
+                </td>
+                <td>
+                    @company.ContactEmail
+                </td>
+                <td>
+                    @company.City
+                </td>
+                <td>
+                    @Html.ActionLink("View details", "Details", "Company", new { id = company.Id }, null)&nbsp;
+                </td>
+            </tr>
+        }
+    </table>
+</div>

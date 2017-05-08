@@ -73,6 +73,10 @@
     <Compile Include="Migrations\201705081015595_CompanyUserRelationship.Designer.cs">
       <DependentUpon>201705081015595_CompanyUserRelationship.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705081442480_ResumeUserLink.cs" />
+    <Compile Include="Migrations\201705081442480_ResumeUserLink.Designer.cs">
+      <DependentUpon>201705081442480_ResumeUserLink.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Course.cs" />
@@ -92,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705081015595_CompanyUserRelationship.resx">
       <DependentUpon>201705081015595_CompanyUserRelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705081442480_ResumeUserLink.resx">
+      <DependentUpon>201705081442480_ResumeUserLink.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

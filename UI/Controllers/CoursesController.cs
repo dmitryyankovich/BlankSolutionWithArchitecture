@@ -11,6 +11,7 @@ using UI.Models.Courses;
 
 namespace UI.Controllers
 {
+    [Authorize]
     public class CoursesController : BaseController
     {
 
@@ -32,7 +33,14 @@ namespace UI.Controllers
         // GET: Courses/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var course = UnitOfWork.CourseRepository.Get(id);
+            if (course == null)
+            {
+                //TODO: show error message
+                throw new Exception("The course doesn't exist.");
+            }
+            var model = GetViewModel(course);
+            return View(model);
         }
 
         // GET: Courses/Create
@@ -48,7 +56,7 @@ namespace UI.Controllers
             try
             {
                 var course = new Course();
-                FillFromViewModel(course,model);
+                FillFromViewModel(course, model);
                 UnitOfWork.CourseRepository.Insert(course);
                 UnitOfWork.Commit();
                 return RedirectToAction("Index");
@@ -115,6 +123,23 @@ namespace UI.Controllers
                 LastUpdatedOn = course.UpdateDate,
                 SalaryLevel = course.SalaryLevel,
                 Title = course.Title
+            };
+        }
+
+        private CourseDetailsVM GetViewModel(Course course)
+        {
+            return new CourseDetailsVM
+            {
+                Id = course.Id,
+                CanBeEdited = User.IsInRole("CustomerAdministator") && course.Company == CurrentUser.Company,
+                Title = course.Title,
+                Advantages = course.Advantages,
+                Description = course.Description,
+                MinimalExpirience = course.MinimalExpirience,
+                Requirements = course.Requirements,
+                Responsibilities = course.Responsibilities,
+                SalaryLevel = course.SalaryLevel,
+                Tags = string.Join(",",course.Tags.Select(t => t.Name).ToList())      
             };
         }
 
