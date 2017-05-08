@@ -23,6 +23,7 @@ namespace DAL.Models
         public string PathToAvatar { get; set; }
         public string Benefits { get; set; }
         public bool IsCreationRequest { get; set; }
-        public ICollection<Course> Courses { get; set; }
+        public virtual ICollection<Course> Courses { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

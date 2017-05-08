@@ -14,11 +14,15 @@ namespace DAL.Models
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public DateTime UpdateDate { get; set; }
         public string Responsibilities { get; set; }
         public string Requirements { get; set; }
         public string Advantages { get; set; }
         public string SalaryLevel { get; set; }
         public string MinimalExpirience { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
+        public virtual Company Company { get; set; }
     }
 }

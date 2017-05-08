@@ -79,8 +79,8 @@ namespace DAL.Migrations
                 {
                     user1 = new User
                     {
-                        Email = "administrator@reportit.com",
-                        UserName = "administrator@reportit.com",
+                        Email = "administrator@test.com",
+                        UserName = "administrator@test.com",
                         EmailConfirmed = true
                     };
                     userManager.Create(user1, "reportit25");
@@ -88,36 +88,6 @@ namespace DAL.Migrations
                 if (!userManager.IsInRole(user1.Id, "SuperAdministrator"))
                 {
                     userManager.AddToRole(user1.Id, "SuperAdministrator");
-                }
-                var user2 = userManager.FindByEmail("alavalle@reportit.com");
-                if (user2 == null)
-                {
-                    user2 = new User
-                    {
-                        Email = "alavalle@reportit.com",
-                        UserName = "alavalle@reportit.com",
-                        EmailConfirmed = true
-                    };
-                    userManager.Create(user2, "reportit50");
-                }
-                if (!userManager.IsInRole(user2.Id, "SuperAdministrator"))
-                {
-                    userManager.AddToRole(user2.Id, "SuperAdministrator");
-                }
-                var user3 = userManager.FindByEmail("rsobieski@reportit.com");
-                if (user3 == null)
-                {
-                    user3 = new User
-                    {
-                        Email = "rsobieski@reportit.com",
-                        UserName = "rsobieski@reportit.com",
-                        EmailConfirmed = true
-                    };
-                    userManager.Create(user3, "reportit99");
-                }
-                if (!userManager.IsInRole(user3.Id, "SuperAdministrator"))
-                {
-                    userManager.AddToRole(user3.Id, "SuperAdministrator");
                 }
                 context.SaveChanges();
             }

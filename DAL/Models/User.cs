@@ -21,6 +21,8 @@ namespace DAL.Models
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             return userIdentity;
         }
+
+        public virtual Company Company { get; set; }
     }
 
     public class Role : IdentityRole

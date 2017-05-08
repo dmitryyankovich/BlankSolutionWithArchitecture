@@ -30,6 +30,9 @@ namespace DAL.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        Title = c.String(),
+                        Description = c.String(),
+                        UpdateDate = c.DateTime(nullable: false),
                         Responsibilities = c.String(),
                         Requirements = c.String(),
                         Advantages = c.String(),
@@ -95,11 +98,11 @@ namespace DAL.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Courses", "Company_Id", "dbo.Companies");
             DropForeignKey("dbo.ResumeTags", "Tag_Id", "dbo.Tags");
             DropForeignKey("dbo.ResumeTags", "Resume_Id", "dbo.Resumes");
             DropForeignKey("dbo.TagCourses", "Course_Id", "dbo.Courses");
             DropForeignKey("dbo.TagCourses", "Tag_Id", "dbo.Tags");
+            DropForeignKey("dbo.Courses", "Company_Id", "dbo.Companies");
             DropIndex("dbo.ResumeTags", new[] { "Tag_Id" });
             DropIndex("dbo.ResumeTags", new[] { "Resume_Id" });
             DropIndex("dbo.TagCourses", new[] { "Course_Id" });

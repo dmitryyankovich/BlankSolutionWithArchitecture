@@ -65,9 +65,13 @@
     <Compile Include="Migrations\201704261313297_Initial.Designer.cs">
       <DependentUpon>201704261313297_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705030945511_BasicEntities.cs" />
-    <Compile Include="Migrations\201705030945511_BasicEntities.Designer.cs">
-      <DependentUpon>201705030945511_BasicEntities.cs</DependentUpon>
+    <Compile Include="Migrations\201705081002557_BasicEntities.cs" />
+    <Compile Include="Migrations\201705081002557_BasicEntities.Designer.cs">
+      <DependentUpon>201705081002557_BasicEntities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705081015595_CompanyUserRelationship.cs" />
+    <Compile Include="Migrations\201705081015595_CompanyUserRelationship.Designer.cs">
+      <DependentUpon>201705081015595_CompanyUserRelationship.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Company.cs" />
@@ -83,8 +87,11 @@
     <EmbeddedResource Include="Migrations\201704261313297_Initial.resx">
       <DependentUpon>201704261313297_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705030945511_BasicEntities.resx">
-      <DependentUpon>201705030945511_BasicEntities.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705081002557_BasicEntities.resx">
+      <DependentUpon>201705081002557_BasicEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705081015595_CompanyUserRelationship.resx">
+      <DependentUpon>201705081015595_CompanyUserRelationship.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,70 @@
+﻿@model UI.Models.Courses.CoursesIndexVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row panel-container">
+    <div class="col-md-6 col-md-offset-3">
+
+        <div class="panel panel-default">
+            <div class="text-center">
+                <a href="@Url.Action("Create")" class="provider-panel">
+                    <h4>
+                        Create Course
+                    </h4>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                CompanyName
+            </th>
+            <th>
+                LastUpdatedOn
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                SalaryLevel
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+        @foreach (var course in Model.Courses)
+        {
+            <tr>
+                <td>
+                    @course.Title
+                </td>
+                <td>
+                    @course.CompanyName
+                </td>
+                <td>
+                    @course.LastUpdatedOn
+                </td>
+                <td>
+                    @course.Description
+                </td>
+                <td>
+                    @course.SalaryLevel
+                </td>
+                <td>
+                    @Html.ActionLink("View details", "Details", "Courses", new { id = course.Id }, null)&nbsp;
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

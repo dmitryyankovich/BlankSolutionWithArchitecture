@@ -1,0 +1,51 @@
+﻿@model UI.Models.Courses.CourseVM
+<div class="bordered-content">
+    <div class="form-group">
+        <label class="col-md-4">Title</label>
+        <div class="col-md-8">
+            @Html.TextBoxFor(m => m.Title, null, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4">Description</label>
+        <div class="col-md-8">
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4">Responsibilities</label>
+        <div class="col-md-8">
+            @Html.TextAreaFor(m => m.Responsibilities, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4">Requirements</label>
+        <div class="col-md-8">
+            @Html.TextAreaFor(m => m.Requirements, new {@class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4">Advantages</label>
+        <div class="col-md-8">
+            @Html.TextAreaFor(m => m.Advantages, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4">Salary Level</label>
+        <div class="col-md-8">
+            @Html.TextBoxFor(m => m.SalaryLevel, null, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4">Minimal Expirience</label>
+        <div class="col-md-8">
+            @Html.TextBoxFor(m => m.MinimalExpirience, null, new {@class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4">Tags</label>
+        <div class="col-md-8">
+            @Html.TextBoxFor(m => m.Tags, null, new { @class = "form-control", id = "tags-input", data_role = "tagsinput" })
+        </div>
+    </div>
+</div>
