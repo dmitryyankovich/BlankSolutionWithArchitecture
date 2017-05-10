@@ -81,6 +81,10 @@
     <Compile Include="Migrations\201705091046033_ResumeKey.Designer.cs">
       <DependentUpon>201705091046033_ResumeKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705101151230_CourseResponses.cs" />
+    <Compile Include="Migrations\201705101151230_CourseResponses.Designer.cs">
+      <DependentUpon>201705101151230_CourseResponses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Course.cs" />
@@ -106,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705091046033_ResumeKey.resx">
       <DependentUpon>201705091046033_ResumeKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705101151230_CourseResponses.resx">
+      <DependentUpon>201705101151230_CourseResponses.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

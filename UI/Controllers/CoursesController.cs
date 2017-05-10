@@ -67,6 +67,39 @@ namespace UI.Controllers
             }
         }
 
+        public ActionResult RespondToCourse(int id)
+        {
+            var course = UnitOfWork.CourseRepository.Get(id);
+            if (course == null)
+            {
+                throw new Exception("Course doesn't exist");
+            }
+            var courseResponse = new CourseResponse
+            {
+                Course = course,
+                User = CurrentUser,
+                CreatedOn = DateTime.UtcNow,
+                Status = Common.CourseResponseStatus.Initial
+            };
+            UnitOfWork.CourseResponseRepository.Insert(courseResponse);
+            UnitOfWork.Commit();
+            return RedirectToAction("Details", new {id = id});
+        }
+
+        public ActionResult AnswerToResponse(int id)
+        {
+            return View();
+        }
+
+        public ActionResult ViewResponses(int id)
+        {
+            var model = new CourseResponsesVM
+            {
+                CourseResponses = UnitOfWork.CourseRepository.Get(id).CourseResponses.Select(GetCourseResponseVM).ToList()
+            };
+            return View(model);
+        }
+
         // GET: Courses/Edit/5
         public ActionResult Edit(int id)
         {
@@ -126,6 +159,19 @@ namespace UI.Controllers
             };
         }
 
+        private CourseResponseVM GetCourseResponseVM(CourseResponse courseResponse)
+        {
+            return new CourseResponseVM
+            {
+                Id = courseResponse.Id,
+                UserId = courseResponse.User.Id,
+                CreatedOn = courseResponse.CreatedOn,
+                Status = courseResponse.Status,
+                UserName = courseResponse.User.Resume.Name + " " + courseResponse.User.Resume.LastName,
+                UserEmail = courseResponse.User.Email
+            };
+        }
+
         private CourseDetailsVM GetViewModel(Course course)
         {
             return new CourseDetailsVM
@@ -139,7 +185,8 @@ namespace UI.Controllers
                 Requirements = course.Requirements,
                 Responsibilities = course.Responsibilities,
                 SalaryLevel = course.SalaryLevel,
-                Tags = string.Join(",",course.Tags.Select(t => t.Name).ToList())      
+                Tags = string.Join(",",course.Tags.Select(t => t.Name).ToList()),
+                IsResponseSended = CurrentUser.CourseResponses.Any(cr => cr.Course.Id == course.Id)
             };
         }
 

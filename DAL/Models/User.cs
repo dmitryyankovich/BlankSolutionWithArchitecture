@@ -24,6 +24,7 @@ namespace DAL.Models
 
         public virtual Company Company { get; set; }
         public virtual Resume Resume { get; set; }
+        public virtual ICollection<CourseResponse> CourseResponses { get; set; }
     }
 
     public class Role : IdentityRole

@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common;
 using DAL.Interfaces;
 
 namespace DAL.Models
@@ -24,5 +25,17 @@ namespace DAL.Models
         public string MinimalExpirience { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
         public virtual Company Company { get; set; }
+        public virtual ICollection<CourseResponse> CourseResponses { get; set; }
+    }
+
+    public class CourseResponse : IIdModel
+    {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public CourseResponseStatus Status { get; set; }
+        public string RefinementText { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public virtual User User { get; set; }
+        public virtual Course Course { get; set; }
     }
 }

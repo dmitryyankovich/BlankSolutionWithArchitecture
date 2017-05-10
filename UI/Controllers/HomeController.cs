@@ -80,7 +80,7 @@ namespace UI.Controllers
         {
             try
             {
-                var resume = CurrentUser.Resume;
+                var resume = CurrentUser.Resume ?? new Resume();
                 FillFromViewModel(resume, model);
                 CurrentUser.Resume = resume;
                 UnitOfWork.UserRepository.Update(CurrentUser);

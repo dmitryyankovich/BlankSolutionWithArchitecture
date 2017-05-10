@@ -69,5 +69,10 @@ namespace DAL
         {
             get { return _tagRepository ?? (_tagRepository = new Repository<Tag>(Context)); }
         }
+        private Repository<CourseResponse> _courseResponseRepository;
+        public IRepository<CourseResponse> CourseResponseRepository
+        {
+            get { return _courseResponseRepository ?? (_courseResponseRepository = new Repository<CourseResponse>(Context)); }
+        }
     }
 }

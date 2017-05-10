@@ -1,0 +1,49 @@
+﻿@using Common
+@model UI.Models.Courses.CourseResponsesVM
+@{
+    ViewBag.Title = "View Responses";
+}
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                User Name
+            </th>
+            <th>
+                User Email
+            </th>
+            <th>
+                Sended On
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+        @foreach (var courseResponse in Model.CourseResponses)
+        {
+            <tr>
+                <td>
+                    @courseResponse.UserName
+                </td>
+                <td>
+                    @courseResponse.UserName
+                </td>
+                <td>
+                    @courseResponse.CreatedOn
+                </td>
+                <td>
+                    @courseResponse.Status
+                </td>
+                <td>
+                    @Html.ActionLink("Accept", "Details", "Courses", new {id = courseResponse.Id, status = CourseResponseStatus.Accepted}, null)&nbsp;
+                    @Html.ActionLink("Decline", "Details", "Courses", new {id = courseResponse.Id, status = CourseResponseStatus.Declined }, null)&nbsp;
+                    @Html.ActionLink("Request clarification", "Details", "Courses", new { id = courseResponse.Id, status = CourseResponseStatus.Refinement }, null)&nbsp;
+                </td>
+            </tr>
+        }
+    </table>
+</div>

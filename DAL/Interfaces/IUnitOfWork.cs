@@ -16,5 +16,6 @@ namespace DAL.Interfaces
         IRepository<Course> CourseRepository { get; }
         IRepository<Resume> ResumeRepository { get; }
         IRepository<Tag> TagRepository { get; }
+        IRepository<CourseResponse> CourseResponseRepository { get; }
     }
 }

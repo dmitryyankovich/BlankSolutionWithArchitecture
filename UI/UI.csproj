@@ -243,6 +243,7 @@
     <Compile Include="Models\Company\CompanyIndexVM.cs" />
     <Compile Include="Models\Company\CompanyVM.cs" />
     <Compile Include="Models\Courses\CourseDetailsVM.cs" />
+    <Compile Include="Models\Courses\CourseResponsesVM.cs" />
     <Compile Include="Models\Courses\CoursesIndexVM.cs" />
     <Compile Include="Models\Courses\CourseVM.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -328,6 +329,7 @@
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ResumeVM.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
+    <Content Include="Views\Courses\ViewResponses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

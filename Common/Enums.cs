@@ -33,9 +33,17 @@ namespace Common
 
     public enum SkillsLevel
     {
-        Higher = 0,
-        Bachelor = 1,
-        Master = 2,
-        IncompleteHigher = 3
+        Junior = 0,
+        Middle = 1,
+        Senior = 2
+    }
+
+    public enum CourseResponseStatus
+    {
+        Initial = 0,
+        Viewed = 1,
+        Refinement = 2,
+        Accepted = 3,
+        Declined = 4
     }
 }

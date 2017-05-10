@@ -17,5 +17,6 @@ namespace UI.Models.Courses
         public string SalaryLevel { get; set; }
         public string MinimalExpirience { get; set; }
         public string Tags { get; set; }
+        public bool IsResponseSended { get; set; }
     }
 }

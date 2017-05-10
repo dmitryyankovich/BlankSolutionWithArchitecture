@@ -66,3 +66,22 @@
         </div>
     </div>
 </div>
+@if (User.IsInRole("RegularUser"))
+{
+    <div class="panel panel-default">
+        <div class="text-center">
+            @if (Model.IsResponseSended)
+            {
+                <text>Waiting for response</text>
+            }
+            else
+            {
+                <a class="" href="@Url.Action("RespondToCourse", "Courses", new { id = Model.Id })">
+                    <h4>
+                        Respond to course
+                    </h4>
+                </a>
+            }
+        </div>
+    </div>
+}
