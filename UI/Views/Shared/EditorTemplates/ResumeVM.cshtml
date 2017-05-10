@@ -1,0 +1,52 @@
+﻿@model UI.Models.ResumeVM
+    @using Common
+<div class="bordered-content">
+    <div class="form-group">
+        <label class="col-md-4">Name</label>
+        <div class="col-md-8">
+            @Html.TextBoxFor(m => m.Name, null, new {@class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4">LastName</label>
+        <div class="col-md-8">
+            @Html.TextBoxFor(m => m.LastName, null, new {@class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4">Cellphone</label>
+        <div class="col-md-8">
+            @Html.TextBoxFor(m => m.Cellphone, null, new {@class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4">Date Of Birth</label>
+        <div class="col-md-8">
+            @Html.TextBoxFor(m => m.DateOfBirth, "{0:yyyy-MM-dd}", new { @class = "form-control datetimepicker" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4">Education Level</label>
+        <div class="col-md-8">
+            @Html.DropDownListFor(m => m.EducationLevel, EnumHelper.GetSelectList(typeof(EducationLevel)), new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4">English Level</label>
+        <div class="col-md-8">
+            @Html.DropDownListFor(m => m.EnglishLevel, EnumHelper.GetSelectList(typeof(EnglishLevel)), new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4">Skills Level</label>
+        <div class="col-md-8">
+            @Html.DropDownListFor(m => m.SkillsLevel, EnumHelper.GetSelectList(typeof(SkillsLevel)), new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4">Tags</label>
+        <div class="col-md-8">
+            @Html.TextBoxFor(m => m.Tags, null, new { @class = "form-control", id = "tags-input", data_role = "tagsinput" })
+        </div>
+    </div>
+</div>

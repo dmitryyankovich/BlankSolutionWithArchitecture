@@ -176,6 +176,10 @@ namespace UI.Controllers
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        if (!model.IsCustomer)
+                        {
+                            return RedirectToAction("CreateResume", "Home");
+                        }
                         return RedirectToAction("Index", "Home");
                     }
                 }

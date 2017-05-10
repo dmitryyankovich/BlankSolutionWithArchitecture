@@ -158,11 +158,15 @@ namespace UI.Controllers
             course.Tags = new List<Tag>();
             foreach (var tag in tagsArray)
             {
-                var dbTag = new Tag
+                var dbTag = UnitOfWork.TagRepository.GetAll().FirstOrDefault(t => t.Name == tag);
+                if (dbTag == null)
                 {
-                    Name = tag
-                };
-                UnitOfWork.TagRepository.Insert(dbTag);
+                    dbTag = new Tag
+                    {
+                        Name = tag
+                    };
+                    UnitOfWork.TagRepository.Insert(dbTag);
+                }
                 course.Tags.Add(dbTag);
             }
             UnitOfWork.Commit();

@@ -22,7 +22,9 @@ namespace UI
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
-                      "~/Scripts/bootstrap-tagsinput.js"));
+                      "~/Scripts/bootstrap-tagsinput.js",
+                      "~/Scripts/moment.js",
+                      "~/Scripts/bootstrap-datetimepicker.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/courses").Include(
           "~/Scripts/courses.js"));
@@ -30,7 +32,8 @@ namespace UI
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/bootstrap-tagsinput.css"));
+                      "~/Content/bootstrap-tagsinput.css",
+                      "~/Content/bootstrap-datetimepicker.css"));
         }
     }
 }

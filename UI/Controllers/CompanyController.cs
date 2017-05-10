@@ -24,7 +24,7 @@ namespace UI.Controllers
         {
             var model = new CompanyIndexVM
             {
-                CanCreateCompany = User.IsInRole("CustomerAdministator") && CurrentUser.Company == null,
+                CanCreateCompany = User.IsInRole("CustomerAdministrator") && CurrentUser.Company == null,
                 Companies = UnitOfWork.CompanyRepository.GetAll().ToList().Select(GetCourseListVM).ToList()
             };
             return View(model);
@@ -156,6 +156,7 @@ namespace UI.Controllers
             company.ContactLastName = model.ContactLastName;
             company.ContactPhone = model.ContactPhone;
             company.Name = model.Name;
+            company.Users = new List<User>();
             company.Users.Add(CurrentUser);
         }
         #endregion
