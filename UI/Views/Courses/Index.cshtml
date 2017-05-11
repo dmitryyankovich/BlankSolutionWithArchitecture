@@ -64,7 +64,8 @@
                     @course.SalaryLevel
                 </td>
                 <td>
-                    @Html.ActionLink("View details", "Details", "Courses", new { id = course.Id }, null)&nbsp;
+                    @Html.ActionLink("View details", "Details", "Courses", new {id = course.Id}, null)&nbsp;
+                    @Html.ActionLink("View responses", "ViewResponses", "Courses", new { id = course.Id }, null)&nbsp;
                 </td>
             </tr>
         }

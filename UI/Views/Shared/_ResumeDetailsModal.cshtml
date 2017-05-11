@@ -1,0 +1,81 @@
+﻿@model UI.Models.ResumeVM
+    
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <span id="myModalLabel">Resume Details</span>
+        </div>
+        <div class="modal-body">
+            <div class="bordered-content">
+                <div class="control-group">
+                    <div>
+                        <label class="col-md-5">Name:</label>
+                        <div class="col-md-6">
+                            @Html.DisplayFor(m => m.Name)
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div>
+                        <label class="col-md-5">LastName:</label>
+                        <div class="col-md-6">
+                            @Html.DisplayFor(m => m.LastName)
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div>
+                        <label class="col-md-5">Cellphone:</label>
+                        <div class="col-md-6">
+                            @Html.DisplayFor(m => m.Cellphone)
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div>
+                        <label class="col-md-5">Date Of Birth:</label>
+                        <div class="col-md-6">
+                            @Html.DisplayFor(m => m.DateOfBirth)
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div>
+                        <label class="col-md-5">Education Level:</label>
+                        <div class="col-md-6">
+                            @Html.DisplayFor(m => m.EducationLevel)
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div>
+                        <label class="col-md-5">English Level:</label>
+                        <div class="col-md-6">
+                            @Html.DisplayFor(m => m.EnglishLevel)
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div>
+                        <label class="col-md-5">Skills Level:</label>
+                        <div class="col-md-6">
+                            @Html.DisplayFor(m => m.SkillsLevel)
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div>
+                        <label class="col-md-5">Tags:</label>
+                        <div class="col-md-6">
+                            @Html.DisplayFor(m => m.Tags)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

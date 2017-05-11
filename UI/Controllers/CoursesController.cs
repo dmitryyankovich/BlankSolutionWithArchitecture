@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BLL.Identity;
+using Common;
 using DAL.Interfaces;
 using DAL.Models;
 using UI.Core.Controllers;
@@ -79,7 +80,7 @@ namespace UI.Controllers
                 Course = course,
                 User = CurrentUser,
                 CreatedOn = DateTime.UtcNow,
-                Status = Common.CourseResponseStatus.Initial
+                Status = CourseResponseStatus.Initial
             };
             UnitOfWork.CourseResponseRepository.Insert(courseResponse);
             UnitOfWork.Commit();
@@ -98,6 +99,23 @@ namespace UI.Controllers
                 CourseResponses = UnitOfWork.CourseRepository.Get(id).CourseResponses.Select(GetCourseResponseVM).ToList()
             };
             return View(model);
+        }
+
+        public ActionResult AnswerToResponse(int id, CourseResponseStatus status)
+        {
+            var courseResponse = UnitOfWork.CourseResponseRepository.Get(id);
+            if (courseResponse == null)
+            {
+                throw new Exception("Course response not found");
+            }
+            if (status == CourseResponseStatus.Refinement)
+            {
+                return PartialView("", new {id = id});
+            }
+            courseResponse.Status = status;
+            UnitOfWork.CourseResponseRepository.Update(courseResponse);
+            UnitOfWork.Commit();
+            return RedirectToAction("ViewResponses", new {id = id});
         }
 
         // GET: Courses/Edit/5

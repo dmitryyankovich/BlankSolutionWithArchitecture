@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "View Responses";
 }
+<div class="modal" id="ModalContainer" role="dialog" aria-hidden="true">
+</div>
 
 <div class="table-responsive">
     <table class="table table-bordered">
@@ -27,10 +29,11 @@
         {
             <tr>
                 <td>
-                    @courseResponse.UserName
+                    @courseResponse.UserName <a class="" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#ModalContainer"
+                       data-toggle="modal" data-target="#ModalContainer" href="@Url.Action("ViewResume", "Home", new {id = courseResponse.UserId})">View Resume</a>
                 </td>
                 <td>
-                    @courseResponse.UserName
+                    @courseResponse.UserEmail
                 </td>
                 <td>
                     @courseResponse.CreatedOn
@@ -39,9 +42,24 @@
                     @courseResponse.Status
                 </td>
                 <td>
-                    @Html.ActionLink("Accept", "Details", "Courses", new {id = courseResponse.Id, status = CourseResponseStatus.Accepted}, null)&nbsp;
-                    @Html.ActionLink("Decline", "Details", "Courses", new {id = courseResponse.Id, status = CourseResponseStatus.Declined }, null)&nbsp;
-                    @Html.ActionLink("Request clarification", "Details", "Courses", new { id = courseResponse.Id, status = CourseResponseStatus.Refinement }, null)&nbsp;
+                    @if (courseResponse.Status == CourseResponseStatus.Accepted)
+                    {
+                        <text>Accepted</text>
+                        @Html.ActionLink("Decline", "AnswerToResponse", "Courses", new { id = courseResponse.Id, status = CourseResponseStatus.Declined }, null)<text>&nbsp;</text>
+                        @Html.ActionLink("Request clarification", "AnswerToResponse", "Courses", new { id = courseResponse.Id, status = CourseResponseStatus.Refinement }, null)<text>&nbsp;</text>
+                    }
+                    @if (courseResponse.Status == CourseResponseStatus.Declined)
+                    {
+                        <text>Declined</text>
+                        @Html.ActionLink("Accept", "AnswerToResponse", "Courses", new { id = courseResponse.Id, status = CourseResponseStatus.Accepted }, null)<text>&nbsp;</text>
+                        @Html.ActionLink("Request clarification", "AnswerToResponse", "Courses", new { id = courseResponse.Id, status = CourseResponseStatus.Refinement }, null)<text>&nbsp;</text>
+                    }
+                    @if (courseResponse.Status == CourseResponseStatus.Refinement)
+                    {
+                        <text>Waiting for Refinement</text>
+                        @Html.ActionLink("Accept", "AnswerToResponse", "Courses", new { id = courseResponse.Id, status = CourseResponseStatus.Accepted }, null)<text>&nbsp;</text>
+                        @Html.ActionLink("Decline", "AnswerToResponse", "Courses", new { id = courseResponse.Id, status = CourseResponseStatus.Declined }, null)<text>&nbsp;</text>
+                    }
                 </td>
             </tr>
         }

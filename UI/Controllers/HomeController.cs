@@ -93,6 +93,18 @@ namespace UI.Controllers
             }
         }
 
+        public ActionResult ViewResume(int id)
+        {
+            var user = UnitOfWork.UserRepository.Get(id);
+            if (user?.Resume == null)
+            {
+                throw new Exception("Resume doesnt't exist");
+            }
+            var model = new ResumeVM();
+            FillViewModel(user.Resume, model);
+            return PartialView("_ResumeDetailsModal",model);
+        }
+
         #region Private methods
         private void FillFromViewModel(Resume resume, ResumeVM model)
         {

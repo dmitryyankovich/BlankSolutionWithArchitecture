@@ -330,6 +330,7 @@
     <Content Include="Views\Shared\EditorTemplates\ResumeVM.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Courses\ViewResponses.cshtml" />
+    <Content Include="Views\Shared\_ResumeDetailsModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
