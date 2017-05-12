@@ -9,11 +9,6 @@
             <div class="col-md-12">
                 <h4>
                     Customer Details
-                    @if (User.IsInRole("CustomerAdministrator"))
-                    {
-                        <text>[</text>@Html.ActionLink("Go to edit mode", "Edit", new { id = Model.Id })<text>]</text>
-                    }
-
                 </h4>
                 <hr>
             </div>

@@ -31,7 +31,7 @@
             <tr>
                 <td>
                     @courseResponse.UserName <a class="" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#ModalContainer"
-                       data-toggle="modal" data-target="#ModalContainer" href="@Url.Action("ViewResume", "Home", new {id = courseResponse.UserId})">View Resume</a>
+                                                data-toggle="modal" data-target="#ModalContainer" href="@Url.Action("ViewResume", "Home", new {id = courseResponse.UserId})">View Resume</a>
                 </td>
                 <td>
                     @courseResponse.UserEmail
@@ -45,37 +45,37 @@
                 <td>
                     @if (courseResponse.Status == CourseResponseStatus.Initial)
                     {
-                        @Html.ActionLink("Accept", "AnswerToResponse", "Courses", new { id = courseResponse.Id, status = CourseResponseStatus.Accepted }, null)<text>&nbsp;</text>
-                        @Html.ActionLink("Decline", "AnswerToResponse", "Courses", new { id = courseResponse.Id, status = CourseResponseStatus.Declined }, null)<text>&nbsp;</text>
+                        @Html.ActionLink("Accept", "AnswerToResponse", "Courses", new { id = courseResponse.Id, courseId = Model.CourseId, status = CourseResponseStatus.Accepted }, null)<text>&nbsp;</text>
+                        @Html.ActionLink("Decline", "AnswerToResponse", "Courses", new { id = courseResponse.Id, courseId = Model.CourseId, status = CourseResponseStatus.Declined }, null)<text>&nbsp;</text>
                         <a class="" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#AskModalContainer"
-                           data-toggle="modal" data-target="#AskModalContainer" href="@Url.Action("AnswerToResponse", "Courses", new {id = courseResponse.Id, status = CourseResponseStatus.Refinement})">Request clarification</a>
+                           data-toggle="modal" data-target="#AskModalContainer" href="@Url.Action("AnswerToResponse", "Courses", new {id = courseResponse.Id, courseId = Model.CourseId, status = CourseResponseStatus.Refinement})">Request clarification</a>
                     }
                     @if (courseResponse.Status == CourseResponseStatus.Accepted)
                     {
                         <text>Accepted</text>
-                        @Html.ActionLink("Decline", "AnswerToResponse", "Courses", new {id = courseResponse.Id, status = CourseResponseStatus.Declined}, null)<text>&nbsp;</text>
+                        @Html.ActionLink("Decline", "AnswerToResponse", "Courses", new { id = courseResponse.Id, courseId = Model.CourseId, status = CourseResponseStatus.Declined }, null)<text>&nbsp;</text>
                         <a class="" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#AskModalContainer"
-                           data-toggle="modal" data-target="#AskModalContainer" href="@Url.Action("AnswerToResponse", "Courses", new {id = courseResponse.Id, status = CourseResponseStatus.Refinement})">Request clarification</a>
+                           data-toggle="modal" data-target="#AskModalContainer" href="@Url.Action("AnswerToResponse", "Courses", new {id = courseResponse.Id, courseId = Model.CourseId, status = CourseResponseStatus.Refinement})">Request clarification</a>
                     }
                     @if (courseResponse.Status == CourseResponseStatus.Declined)
                     {
                         <text>Declined</text>
-                        @Html.ActionLink("Accept", "AnswerToResponse", "Courses", new {id = courseResponse.Id, status = CourseResponseStatus.Accepted}, null)<text>&nbsp;</text>
+                        @Html.ActionLink("Accept", "AnswerToResponse", "Courses", new { id = courseResponse.Id, courseId = Model.CourseId, status = CourseResponseStatus.Accepted }, null)<text>&nbsp;</text>
                         <a class="" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#AskModalContainer"
-                           data-toggle="modal" data-target="#AskModalContainer" href="@Url.Action("AnswerToResponse", "Courses", new {id = courseResponse.Id, status = CourseResponseStatus.Refinement})">Request clarification</a>
+                           data-toggle="modal" data-target="#AskModalContainer" href="@Url.Action("AnswerToResponse", "Courses", new { id = courseResponse.Id, courseId = Model.CourseId, status = CourseResponseStatus.Refinement })">Request clarification</a>
                     }
                     @if (courseResponse.Status == CourseResponseStatus.Refinement)
                     {
                         <text>Waiting for Refinement</text>
-                        @Html.ActionLink("Accept", "AnswerToResponse", "Courses", new {id = courseResponse.Id, status = CourseResponseStatus.Accepted}, null)<text>&nbsp;</text>
-                        @Html.ActionLink("Decline", "AnswerToResponse", "Courses", new {id = courseResponse.Id, status = CourseResponseStatus.Declined}, null)<text>&nbsp;</text>
+                        @Html.ActionLink("Accept", "AnswerToResponse", "Courses", new { id = courseResponse.Id, courseId = Model.CourseId, status = CourseResponseStatus.Accepted }, null)<text>&nbsp;</text>
+                        @Html.ActionLink("Decline", "AnswerToResponse", "Courses", new { id = courseResponse.Id, courseId = Model.CourseId, status = CourseResponseStatus.Declined }, null)<text>&nbsp;</text>
                     }
                     @if (courseResponse.Status == CourseResponseStatus.RefinementAnswered)
                     {
                         <a class="" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#ModalContainer"
                            data-toggle="modal" data-target="#ModalContainer" href="@Url.Action("ViewRefinementAnswer", "Courses", new {id = courseResponse.Id})">Refinement received</a>
-                        @Html.ActionLink("Accept", "AnswerToResponse", "Courses", new { id = courseResponse.Id, status = CourseResponseStatus.Accepted }, null)<text>&nbsp;</text>
-                        @Html.ActionLink("Decline", "AnswerToResponse", "Courses", new { id = courseResponse.Id, status = CourseResponseStatus.Declined }, null)<text>&nbsp;</text>
+                        @Html.ActionLink("Accept", "AnswerToResponse", "Courses", new { id = courseResponse.Id, courseId = Model.CourseId, status = CourseResponseStatus.Accepted }, null)<text>&nbsp;</text>
+                        @Html.ActionLink("Decline", "AnswerToResponse", "Courses", new { id = courseResponse.Id, courseId = Model.CourseId, status = CourseResponseStatus.Declined }, null)<text>&nbsp;</text>
                     }
                 </td>
             </tr>

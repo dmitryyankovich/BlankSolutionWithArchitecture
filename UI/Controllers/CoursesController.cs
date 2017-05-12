@@ -91,19 +91,20 @@ namespace UI.Controllers
             };
             UnitOfWork.CourseResponseRepository.Insert(courseResponse);
             UnitOfWork.Commit();
-            return RedirectToAction("Details", new {id = id});
+            return RedirectToAction("Details", new { id = id });
         }
 
         public ActionResult ViewResponses(int id)
         {
             var model = new CourseResponsesVM
             {
+                CourseId = id,
                 CourseResponses = UnitOfWork.CourseRepository.Get(id).CourseResponses.Select(GetCourseResponseVM).ToList()
             };
             return View(model);
         }
 
-        public ActionResult AnswerToResponse(int id, CourseResponseStatus status)
+        public ActionResult AnswerToResponse(int id, int courseId, CourseResponseStatus status)
         {
             var courseResponse = UnitOfWork.CourseResponseRepository.Get(id);
             if (courseResponse == null)
@@ -112,12 +113,12 @@ namespace UI.Controllers
             }
             if (status == CourseResponseStatus.Refinement)
             {
-                return PartialView("_AskForRefinement", new RefinementVM {Id = id});
+                return PartialView("_AskForRefinement", new RefinementVM { Id = id });
             }
             courseResponse.Status = status;
             UnitOfWork.CourseResponseRepository.Update(courseResponse);
             UnitOfWork.Commit();
-            return RedirectToAction("ViewResponses", new {id = id});
+            return RedirectToAction("ViewResponses", new { id = courseId });
         }
 
         public ActionResult AskForRefinement(RefinementVM model)
@@ -137,7 +138,7 @@ namespace UI.Controllers
             courseResponse.RefinementAnswerText = model.RefinementAnswer;
             UnitOfWork.CourseResponseRepository.Update(courseResponse);
             UnitOfWork.Commit();
-            return RedirectToAction("Details",new {id = courseResponse.Course.Id});
+            return RedirectToAction("Details", new { id = courseResponse.Course.Id });
         }
 
         public ActionResult ViewRefinementAnswer(int id)
@@ -240,7 +241,7 @@ namespace UI.Controllers
                 Requirements = course.Requirements,
                 Responsibilities = course.Responsibilities,
                 SalaryLevel = course.SalaryLevel,
-                Tags = string.Join(",",course.Tags.Select(t => t.Name).ToList()),
+                Tags = string.Join(",", course.Tags.Select(t => t.Name).ToList()),
                 IsResponseSended = CurrentUser.CourseResponses.Any(cr => cr.Course.Id == course.Id),
                 Status = CurrentUser.CourseResponses.FirstOrDefault(cr => cr.Course.Id == course.Id)?.Status,
                 RefinementMessage = CurrentUser.CourseResponses.FirstOrDefault(cr => cr.Course.Id == course.Id)?.RefinementText,

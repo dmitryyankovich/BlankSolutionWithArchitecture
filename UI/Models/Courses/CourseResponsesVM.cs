@@ -8,6 +8,7 @@ namespace UI.Models.Courses
 {
     public class CourseResponsesVM
     {
+        public int CourseId { get; set; }
         public List<CourseResponseVM> CourseResponses { get; set; }
     }
 
