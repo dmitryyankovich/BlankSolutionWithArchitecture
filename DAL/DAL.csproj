@@ -85,6 +85,10 @@
     <Compile Include="Migrations\201705101151230_CourseResponses.Designer.cs">
       <DependentUpon>201705101151230_CourseResponses.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705120754333_RefinementAnswer.cs" />
+    <Compile Include="Migrations\201705120754333_RefinementAnswer.Designer.cs">
+      <DependentUpon>201705120754333_RefinementAnswer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Course.cs" />
@@ -113,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705101151230_CourseResponses.resx">
       <DependentUpon>201705101151230_CourseResponses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705120754333_RefinementAnswer.resx">
+      <DependentUpon>201705120754333_RefinementAnswer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

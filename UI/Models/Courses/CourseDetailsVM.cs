@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Common;
 
 namespace UI.Models.Courses
 {
@@ -18,5 +19,10 @@ namespace UI.Models.Courses
         public string MinimalExpirience { get; set; }
         public string Tags { get; set; }
         public bool IsResponseSended { get; set; }
+        public CourseResponseStatus? Status { get; set; }
+        public string RefinementMessage { get; set; }
+        public string RefinementAnswer { get; set; }
+        public string Message { get; set; }
+        public int? CourseResponseId { get; set; }
     }
 }

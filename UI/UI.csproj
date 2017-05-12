@@ -246,6 +246,7 @@
     <Compile Include="Models\Courses\CourseResponsesVM.cs" />
     <Compile Include="Models\Courses\CoursesIndexVM.cs" />
     <Compile Include="Models\Courses\CourseVM.cs" />
+    <Compile Include="Models\Courses\RefinementVM.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ResumeVM.cs" />
@@ -331,6 +332,8 @@
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Courses\ViewResponses.cshtml" />
     <Content Include="Views\Shared\_ResumeDetailsModal.cshtml" />
+    <Content Include="Views\Shared\_AskForRefinement.cshtml" />
+    <Content Include="Views\Shared\_RefinementAnswerModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

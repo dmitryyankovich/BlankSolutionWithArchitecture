@@ -44,6 +44,7 @@ namespace Common
         Viewed = 1,
         Refinement = 2,
         Accepted = 3,
-        Declined = 4
+        Declined = 4,
+        RefinementAnswered = 5
     }
 }

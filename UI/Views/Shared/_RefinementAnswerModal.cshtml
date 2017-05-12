@@ -1,0 +1,33 @@
+﻿@model UI.Models.Courses.RefinementAnswerVM
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <span id="myModalLabel">Refinement Answer</span>
+        </div>
+        <div class="modal-body">
+            <div class="bordered-content">
+                <div class="control-group">
+                    <div>
+                        <label class="col-md-5">Message:</label>
+                        <div class="col-md-6">
+                            @Html.DisplayFor(m => m.Message)
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div>
+                        <label class="col-md-5">Answer:</label>
+                        <div class="col-md-6">
+                            @Html.DisplayFor(m => m.Answer)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

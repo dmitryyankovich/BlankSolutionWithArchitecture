@@ -26,7 +26,14 @@ namespace UI.Controllers
         {
             var model = new CoursesIndexVM
             {
-                Courses = UnitOfWork.CourseRepository.GetAll().ToList().Select(GetCourseListVM).ToList()
+                Courses =
+                    User.IsInRole("CustomerAdministrator")
+                        ? UnitOfWork.CourseRepository.GetAll()
+                            .Where(c => c.Company.Users.Select(u => u.Id).Contains(CurrentUser.Id))
+                            .ToList()
+                            .Select(GetCourseListVM)
+                            .ToList()
+                        : UnitOfWork.CourseRepository.GetAll().ToList().Select(GetCourseListVM).ToList()
             };
             return View(model);
         }
@@ -87,11 +94,6 @@ namespace UI.Controllers
             return RedirectToAction("Details", new {id = id});
         }
 
-        public ActionResult AnswerToResponse(int id)
-        {
-            return View();
-        }
-
         public ActionResult ViewResponses(int id)
         {
             var model = new CourseResponsesVM
@@ -110,12 +112,47 @@ namespace UI.Controllers
             }
             if (status == CourseResponseStatus.Refinement)
             {
-                return PartialView("", new {id = id});
+                return PartialView("_AskForRefinement", new RefinementVM {Id = id});
             }
             courseResponse.Status = status;
             UnitOfWork.CourseResponseRepository.Update(courseResponse);
             UnitOfWork.Commit();
             return RedirectToAction("ViewResponses", new {id = id});
+        }
+
+        public ActionResult AskForRefinement(RefinementVM model)
+        {
+            var courseResponse = UnitOfWork.CourseResponseRepository.Get(model.Id);
+            courseResponse.Status = CourseResponseStatus.Refinement;
+            courseResponse.RefinementText = model.Text;
+            UnitOfWork.CourseResponseRepository.Update(courseResponse);
+            UnitOfWork.Commit();
+            return RedirectToAction("ViewResponses", new { id = courseResponse.Course.Id });
+        }
+
+        public ActionResult AnswerToRefinement(CourseDetailsVM model)
+        {
+            var courseResponse = UnitOfWork.CourseResponseRepository.Get(model.CourseResponseId.Value);
+            courseResponse.Status = CourseResponseStatus.RefinementAnswered;
+            courseResponse.RefinementAnswerText = model.RefinementAnswer;
+            UnitOfWork.CourseResponseRepository.Update(courseResponse);
+            UnitOfWork.Commit();
+            return RedirectToAction("Details",new {id = courseResponse.Course.Id});
+        }
+
+        public ActionResult ViewRefinementAnswer(int id)
+        {
+            var courseResponse = UnitOfWork.CourseResponseRepository.Get(id);
+            if (courseResponse == null)
+            {
+                throw new Exception("Course Response doesnt't exist");
+            }
+            var model = new RefinementAnswerVM
+            {
+                Message = courseResponse.RefinementText,
+                Answer = courseResponse.RefinementAnswerText
+            };
+            return PartialView("_RefinementAnswerModal", model);
         }
 
         // GET: Courses/Edit/5
@@ -204,7 +241,10 @@ namespace UI.Controllers
                 Responsibilities = course.Responsibilities,
                 SalaryLevel = course.SalaryLevel,
                 Tags = string.Join(",",course.Tags.Select(t => t.Name).ToList()),
-                IsResponseSended = CurrentUser.CourseResponses.Any(cr => cr.Course.Id == course.Id)
+                IsResponseSended = CurrentUser.CourseResponses.Any(cr => cr.Course.Id == course.Id),
+                Status = CurrentUser.CourseResponses.FirstOrDefault(cr => cr.Course.Id == course.Id)?.Status,
+                RefinementMessage = CurrentUser.CourseResponses.FirstOrDefault(cr => cr.Course.Id == course.Id)?.RefinementText,
+                CourseResponseId = CurrentUser.CourseResponses.FirstOrDefault(cr => cr.Course.Id == course.Id)?.Id
             };
         }
 

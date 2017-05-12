@@ -34,6 +34,7 @@ namespace DAL.Models
         public int Id { get; set; }
         public CourseResponseStatus Status { get; set; }
         public string RefinementText { get; set; }
+        public string RefinementAnswerText { get; set; }
         public DateTime CreatedOn { get; set; }
         public virtual User User { get; set; }
         public virtual Course Course { get; set; }
